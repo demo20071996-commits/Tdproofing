@@ -1,0 +1,7 @@
+custom_dashboard.dashboard:
+  path: '/dashboard'
+  defaults:
+    _controller: '\Drupal\custom_dashboard\Controller\DashboardController::dashboard'
+    _title: 'Dashboard'
+  requirements:
+    _permission: 'access content'

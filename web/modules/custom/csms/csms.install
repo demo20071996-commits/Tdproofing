@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function csms_schema() {
+  $schema['user_company_journal_role'] = [
+    'description' => 'Stores company, journal, role mapping for each user.',
+    'fields' => [
+      'id' => ['type' => 'serial', 'not null' => TRUE],
+      'uid' => ['type' => 'int', 'not null' => TRUE],
+      'company_tid' => ['type' => 'int', 'not null' => TRUE],
+      'journal_tid' => ['type' => 'int', 'not null' => TRUE],
+      'role_tid' => ['type' => 'int', 'not null' => TRUE],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}

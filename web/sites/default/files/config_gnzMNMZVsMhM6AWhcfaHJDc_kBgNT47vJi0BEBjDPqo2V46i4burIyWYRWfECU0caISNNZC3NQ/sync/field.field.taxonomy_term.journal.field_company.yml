@@ -1,0 +1,22 @@
+uuid: de377d86-e454-4256-9209-0c04198a9791
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_company
+    - taxonomy.vocabulary.journal
+id: taxonomy_term.journal.field_company
+field_name: field_company
+entity_type: taxonomy_term
+bundle: journal
+label: Company
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles: {  }
+field_type: entity_reference

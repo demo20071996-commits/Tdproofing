@@ -1,0 +1,6 @@
+
+name: Job Shedular
+type: module
+description: Background job scheduler with export and status tracking.
+core_version_requirement: ^10 || ^11
+package: Custom

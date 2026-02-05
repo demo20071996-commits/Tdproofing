@@ -1,0 +1,11 @@
+dependent_dropdowns:
+  js:
+    js/dependent_dropdowns.js: {}
+    js/dashboard.js: {}
+  css:
+    theme:
+      css/dashboard.css: {} 
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/drupalSettings

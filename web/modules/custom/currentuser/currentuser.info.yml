@@ -1,0 +1,5 @@
+name: 'Current User'
+type: module
+description: 'Auto-fill fields on Proof content type.'
+core_version_requirement: ^10 || ^11
+package: Custom

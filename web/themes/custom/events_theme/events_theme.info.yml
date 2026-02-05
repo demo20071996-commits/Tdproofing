@@ -1,0 +1,13 @@
+name: Events Theme
+type: theme
+core_version_requirement: ^11
+base theme: claro
+libraries:
+  - events_theme/global
+
+regions:
+  header: Header
+  primary_menu: Primary Menu
+  sidebar: Sidebar
+  content: Content
+  footer: Footer

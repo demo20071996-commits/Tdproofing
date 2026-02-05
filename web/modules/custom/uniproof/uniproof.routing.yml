@@ -1,0 +1,15 @@
+uniproof.dashboard:
+  path: '/admin/uniproof'
+  defaults:
+    _controller: '\Drupal\uniproof\Controller\DashboardController::view'
+    _title: 'UniProof Dashboard'
+  requirements:
+    _permission: 'access administration pages'
+
+uniproof.workflow_tools:
+  path: '/admin/workflow-tools'
+  defaults:
+    _controller: '\Drupal\uniproof\Controller\ToolsController::view'
+    _title: 'Workflow Tools'
+  requirements:
+    _permission: 'access administration pages'

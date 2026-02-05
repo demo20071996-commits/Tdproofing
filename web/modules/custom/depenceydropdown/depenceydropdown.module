@@ -1,0 +1,63 @@
+
+<?php
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function depenceydropdown_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+
+  if ($form_id !== 'user_form' && $form_id !== 'user_register_form') {
+    return;
+  }
+
+  $form['#attached']['library'][] = 'depenceydropdown/dependent_dropdowns';
+
+  $form['#attributes']['class'][] = 'dep-dropdown-init';
+
+  $form['company'] = [
+    '#type' => 'select',
+    '#title' => 'Company',
+    '#options' => _depenceydropdown_load_companies(),
+    '#empty_option' => '- Select Company -',
+    '#attributes' => ['id' => 'company-select'],
+  ];
+
+  $form['journal_wrapper'] = [
+    '#type' => 'container',
+    '#attributes' => ['id' => 'journal-wrapper'],
+  ];
+
+  $form['journal_wrapper']['journal'] = [
+    '#type' => 'select',
+    '#title' => 'Journal',
+    '#options' => [],
+    '#empty_option' => '- Select Journal -',
+    '#attributes' => ['id' => 'journal-select'],
+  ];
+
+  $form['role_wrapper'] = [
+    '#type' => 'container',
+    '#attributes' => ['id' => 'role-wrapper'],
+  ];
+
+  $form['role_wrapper']['role'] = [
+    '#type' => 'select',
+    '#title' => 'Role',
+    '#options' => [],
+    '#empty_option' => '- Select Role -',
+    '#attributes' => ['id' => 'role-select'],
+  ];
+}
+
+function _depenceydropdown_load_companies() {
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadTree('companies');
+
+  $options = [];
+  foreach ($terms as $term) {
+    $options[$term->tid] = $term->name;
+  }
+  return $options;
+}

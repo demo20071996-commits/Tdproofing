@@ -1,0 +1,37 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Attach submit handler to user edit form.
+ */
+function csms_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Add custom submit handler.
+  $form['#submit'][] = 'csms_user_save_company_data';
+}
+
+/**
+ * Custom submit handler to store company - journal - role mapping.
+ */
+function csms_user_save_company_data(&$form, FormStateInterface $form_state) {
+
+  $uid = $form_state->getFormObject()->getEntity()->id();
+
+  // Read values
+  $company = $form_state->getValue(['field_company_type', 0, 'target_id']);
+  $journal = $form_state->getValue(['company_dependency_wrapper', 'field_journal', 0, 'target_id']);
+  $role = $form_state->getValue(['company_dependency_wrapper', 'field_role', 0, 'target_id']);
+
+  if ($company && $journal && $role) {
+    \Drupal::database()->insert('user_company_journal_role')
+      ->fields([
+        'uid' => $uid,
+        'company_tid' => $company,
+        'journal_tid' => $journal,
+        'role_tid' => $role,
+      ])
+      ->execute();
+  }
+}

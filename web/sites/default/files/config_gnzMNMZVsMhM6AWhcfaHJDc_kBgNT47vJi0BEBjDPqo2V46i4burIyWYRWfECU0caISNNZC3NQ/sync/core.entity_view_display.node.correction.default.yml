@@ -1,0 +1,72 @@
+uuid: d3c0c5d9-855e-43bb-933a-5082aba2b0be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.correction.field_anchor
+    - field.field.node.correction.field_author
+    - field.field.node.correction.field_mode
+    - field.field.node.correction.field_proof_reference
+    - field.field.node.correction.field_resolved_by
+    - field.field.node.correction.field_status
+    - node.type.correction
+  module:
+    - text
+    - user
+id: node.correction.default
+targetEntityType: node
+bundle: correction
+mode: default
+content:
+  field_anchor:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_author:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_mode:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_proof_reference:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_resolved_by:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_status:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

@@ -1,0 +1,141 @@
+<div class="dashboard-default">
+  <h2>Fallback Dashboard</h2>
+
+  <p>User: {{ user.getDisplayName() }}</p>
+  <p>Company: {{ company_data.company }}</p>
+  <p>Journal: {{ company_data.journal }}</p>
+  <p>Role: {{ company_data.role }}</p>
+</div>
+
+{{ attach_library('tdproofing/dashboard') }}
+
+<div class="td-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="td-sidebar">
+    <div class="td-sidebar-top">
+      <div class="td-logo">
+        <div class="td-logo-mark">◑</div>
+        <div class="td-logo-text">Proofing System</div>
+      </div>
+    </div>
+
+    <nav class="td-nav">
+      <a class="td-nav-item active" href="#">Dashboard</a>
+      <a class="td-nav-item" href="#">Reports</a>
+      <a class="td-nav-item" href="#">Notifications</a>
+      <a class="td-nav-item" href="#">Contact us</a>
+    </nav>
+
+    <div class="td-sidebar-footer">
+      <div class="td-user">
+        <img src="https://i.pravatar.cc/40" class="td-avatar" />
+        <div class="td-user-name">{{ user.name.value }}</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="td-main">
+
+    <!-- HEADER -->
+    <header class="td-header">
+      <button id="tdToggle" class="td-hamburger">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="td-header-title">Home</div>
+
+      <div class="td-header-actions">
+        <button class="td-add-btn">+ Add Article</button>
+
+        <div class="td-notif">
+          <i class="fa fa-bell"></i>
+          <span class="td-badge">6</span>
+        </div>
+
+        <div class="td-profile">
+          <img src="https://i.pravatar.cc/36" />
+          <div class="td-profile-name">{{ user.name.value }} <small>Author</small></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- DASHBOARD CONTENT -->
+    <main class="td-content">
+
+      <!-- KPI GRID -->
+      <section class="td-kpi-grid">
+        <div class="td-kpi-card">
+          <h6>Total Articles</h6>
+          <div class="td-kpi-value">2,604</div>
+          <div class="td-kpi-meta success">▲ 8.5% Up from yesterday</div>
+        </div>
+
+        <div class="td-kpi-card">
+          <h6>Delayed Articles</h6>
+          <div class="td-kpi-value">114</div>
+          <div class="td-kpi-meta success">▲ 1.3% Up from last week</div>
+        </div>
+
+        <div class="td-kpi-card">
+          <h6>Pending Approvals</h6>
+          <div class="td-kpi-value">56</div>
+          <div class="td-kpi-meta success">▲ 1.8% Up from yesterday</div>
+        </div>
+
+        <div class="td-kpi-card">
+          <h6>Approved Articles</h6>
+          <div class="td-kpi-value">2,434</div>
+          <div class="td-kpi-meta danger">▼ 4.3% Down from yesterday</div>
+        </div>
+      </section>
+
+      <!-- ARTICLE LIST -->
+      <section class="td-table-card">
+        <h5>Article List</h5>
+
+        <table class="td-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Assigned To</th>
+              <th>Role</th>
+              <th>Last Updated</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GST revenue Performance</td>
+              <td>Prabhat Kumar</td>
+              <td>Author</td>
+              <td>09-Dec-2025</td>
+              <td><span class="badge pending">Pending</span></td>
+              <td>
+                <button class="td-icon-btn"><i class="fa fa-pen"></i></button>
+                <button class="td-icon-btn"><i class="fa fa-eye"></i></button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>GST revenue Performance</td>
+              <td>Prabhat Kumar</td>
+              <td>Author</td>
+              <td>09-Dec-2025</td>
+              <td><span class="badge approved">Approved</span></td>
+              <td>
+                <button class="td-icon-btn"><i class="fa fa-pen"></i></button>
+                <button class="td-icon-btn"><i class="fa fa-eye"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+
+    </main>
+  </div>
+
+</div>

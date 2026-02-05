@@ -1,0 +1,17 @@
+
+<?php
+function jobshedular_schema() {
+  $schema['jobshedular_jobs'] = [
+    'fields' => [
+      'id' => ['type' => 'serial', 'not null' => TRUE],
+      'job_type' => ['type' => 'varchar', 'length' => 50],
+      'status' => ['type' => 'varchar', 'length' => 20, 'default' => 'pending'],
+      'file_path' => ['type' => 'varchar', 'length' => 255, 'not null' => FALSE],
+      'message' => ['type' => 'text', 'not null' => FALSE],
+      'created' => ['type' => 'int'],
+      'processed' => ['type' => 'int', 'not null' => FALSE],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}

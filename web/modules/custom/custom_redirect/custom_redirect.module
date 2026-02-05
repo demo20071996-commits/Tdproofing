@@ -1,0 +1,151 @@
+<?php
+
+
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_form_alter().
+ */
+function custom_redirect_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  // We want only the Admin user edit form
+  if ($form_id !== 'user_form' && $form_id !== 'user_register_form' && $form_id !== 'user_profile_form') {
+    return;
+  }
+
+  // Ensure field_journal exists
+  if (!isset($form['field_journal'])) {
+    return;
+  }
+
+  // Loop through each journal option and add data-company attribute
+  foreach ($form['field_journal']['widget'][0]['target_id']['#options'] as $tid => &$label) {
+    if (is_numeric($tid)) {
+
+      // Load journal term
+      $journal = Term::load($tid);
+      if (!$journal) {
+        continue;
+      }
+
+      // Read its mapped company reference
+      if ($journal->hasField('field_company_ref') && !$journal->get('field_company_ref')->isEmpty()) {
+        $company_tid = $journal->get('field_company_ref')->target_id;
+
+        // Add attribute to option
+        $label = [
+          'data' => [
+            'company' => $company_tid,
+          ],
+          'label' => $label,
+        ];
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ 
+function custom_redirect_form_user_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  // Example: Add JS for dependent dropdowns.
+  $form['#attached']['library'][] = 'custom_redirect/dependency_dropdowns';
+
+}
+*/
+
+/**
+ * Implements hook_theme().
+
+function custom_redirect_theme() {
+  return [
+    'tdproofing_editor_dashboard' => [
+      'variables' => [
+        'company_data' => NULL,
+        'debug_output' => NULL,
+        'title' => NULL,
+      ],
+      'template' => 'tdproofing-editor-dashboard',
+    ],
+  ];
+}
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function custom_redirect_themeS() {
+  return [
+
+    // 1️⃣ Editor Dashboard
+    'tdproofing_editor_dashboard' => [
+      'variables' => [
+        'company_data' => NULL,
+        'debug_output' => NULL,
+        'title' => NULL,
+      ],
+      'template' => 'tdproofing-editor-dashboard',
+    ],
+
+    // 2️⃣ Typesetter Dashboard
+    'tdproofing_typesetter_dashboard' => [
+      'variables' => [
+        'company_data' => NULL,
+        'debug_output' => NULL,
+        'title' => NULL,
+      ],
+      'template' => 'tdproofing-typesetter-dashboard',
+    ],
+
+    // 3️⃣ Author Dashboard
+    'tdproofing_author_dashboard' => [
+      'variables' => [
+        'company_data' => NULL,
+        'debug_output' => NULL,
+        'title' => NULL,
+      ],
+      'template' => 'tdproofing-author-dashboard',
+    ],
+
+    // 4️⃣ Mastercopy Dashboard
+    'tdproofing_mastercopy_dashboard' => [
+      'variables' => [
+        'company_data' => NULL,
+        'debug_output' => NULL,
+        'title' => NULL,
+      ],
+      'template' => 'tdproofing-mastercopy-dashboard',
+    ],
+
+  ];
+}
+
+
+
+function custom_redirect_theme() {
+  return [
+    'tdproofing_dashboard' => [
+      'template' => 'tdproofing-dashboard',
+      'variables' => [
+        'company_data' => NULL,
+        'user' => NULL,
+        'title' => NULL,
+      ],
+    ],
+    'tdproofing_editor_dashboard' => [
+      'template' => 'tdproofing-editor-dashboard',
+      'variables' => [
+        'company_data' => NULL,
+        'user' => NULL,
+        'title' => NULL,
+      ],
+    ],
+  ];
+}

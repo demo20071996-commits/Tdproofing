@@ -1,0 +1,72 @@
+uuid: 42ed52b3-f030-48b3-811c-af4ba2e9beb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.proof
+  module:
+    - content_moderation
+id: uniproof_workflow
+label: 'UniProof Workflow'
+type: content_moderation
+type_settings:
+  states:
+    author_review:
+      label: 'Author Review'
+      weight: 2
+      published: false
+      default_revision: false
+    closed:
+      label: Closed
+      weight: 7
+      published: false
+      default_revision: false
+    draft:
+      label: Draft
+      weight: 0
+      published: false
+      default_revision: false
+    editor_review:
+      label: 'Editor Review'
+      weight: 3
+      published: false
+      default_revision: false
+    master_copier:
+      label: 'Master Copier'
+      weight: 6
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 1
+      published: true
+      default_revision: true
+    publisher:
+      label: Publisher
+      weight: 5
+      published: false
+      default_revision: false
+    typesetter:
+      label: Typesetter
+      weight: 4
+      published: false
+      default_revision: false
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    publish:
+      label: Publish
+      from:
+        - draft
+        - published
+      to: published
+      weight: 1
+  entity_types:
+    node:
+      - proof
+  default_moderation_state: draft

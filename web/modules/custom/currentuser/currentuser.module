@@ -1,0 +1,57 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function currentuser_form_node_proof_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+
+  // Logged-in user ID.
+  $uid = \Drupal::currentUser()->id();
+
+  // Load the Drupal user object.
+  $account = User::load($uid);
+
+  // 1️⃣ Assigned User field
+  if (isset($form['field_assigned_user'])) {
+    $form['field_assigned_user']['widget'][0]['target_id']['#default_value'] = $account;
+  }
+
+    //  Assign current user to field_current_role ----
+  if (isset($form['field_current_role']['widget'][0]['target_id'])) {
+    $form['field_current_role']['widget'][0]['target_id']['#default_value'] = $account;
+  }
+}
+
+
+function currentuser_node_presave(\Drupal\Core\Entity\EntityInterface $entity) {
+
+  // Apply only on Proof content type.
+  if ($entity->bundle() !== 'proof') {
+    return;
+  }
+
+  // Only run on NEW nodes.
+  if (!$entity->isNew()) {
+    return;
+  }
+
+  // SLA hours.
+  $sla_hours = 48;
+
+  // Calculate deadline timestamp.
+  $deadline_timestamp = \Drupal::time()->getRequestTime() + ($sla_hours * 3600);
+
+  // Format for DateTime and Date fields
+  $deadline_value = date('Y-m-d\TH:i:s', $deadline_timestamp);
+
+  // Save to the field.
+  $entity->set('field_due_date', $deadline_value);
+
+  // Log for debugging (will show in Recent log messages)
+  \Drupal::logger('currentuser')->notice('SLA set to: @date', ['@date' => $deadline_value]);
+}
+
+

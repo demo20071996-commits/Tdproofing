@@ -1,0 +1,16 @@
+
+jobshedular.form:
+  path: '/admin/jobshedular/form'
+  defaults:
+    _form: '\Drupal\jobshedular\Form\JobShedularForm'
+    _title: 'Job Shedular Form'
+  requirements:
+    _permission: 'administer site configuration'
+
+jobshedular.jobs:
+  path: '/admin/jobshedular/jobs'
+  defaults:
+    _controller: '\Drupal\jobshedular\Controller\JobListController::list'
+    _title: 'Job List'
+  requirements:
+    _permission: 'administer site configuration'

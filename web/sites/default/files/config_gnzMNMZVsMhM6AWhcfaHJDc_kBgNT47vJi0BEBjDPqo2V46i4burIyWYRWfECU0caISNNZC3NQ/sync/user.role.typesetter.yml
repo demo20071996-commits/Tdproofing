@@ -1,0 +1,30 @@
+uuid: 66779944-37db-4390-8235-8b706a0f854a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.proof
+  module:
+    - block_content
+    - file
+    - node
+    - system
+    - toolbar
+id: typesetter
+label: Typesetter
+weight: 6
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access block library'
+  - 'access content'
+  - 'access content overview'
+  - 'access files overview'
+  - 'access toolbar'
+  - 'create proof content'
+  - 'delete any proof content'
+  - 'delete own proof content'
+  - 'delete proof revisions'
+  - 'edit any proof content'
+  - 'edit own proof content'
+  - 'view the administration theme'

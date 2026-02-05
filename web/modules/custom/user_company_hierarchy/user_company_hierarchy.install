@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function user_company_hierarchy_schema() {
+  $schema['user_company_map'] = [
+    'description' => 'Stores company hierarchy selections per user.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'uid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'company' => [
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+      'journal' => [
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+      'role' => [
+        'type' => 'varchar',
+        'length' => 255,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'uid' => ['uid'],
+    ],
+  ];
+
+  return $schema;
+}

@@ -1,0 +1,41 @@
+uuid: 25443079-1ad8-44b2-bf83-810f2a10d9e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.proof
+    - taxonomy.vocabulary.tags
+    - workflows.workflow.uniproof_workflow
+  module:
+    - content_moderation
+    - field_ui
+    - node
+    - system
+    - taxonomy
+    - toolbar
+id: author
+label: Author
+weight: 4
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access toolbar'
+  - 'administer display modes'
+  - 'create proof content'
+  - 'create terms in tags'
+  - 'delete any proof content'
+  - 'delete own proof content'
+  - 'delete proof revisions'
+  - 'edit any proof content'
+  - 'edit own proof content'
+  - 'edit terms in tags'
+  - 'revert all revisions'
+  - 'revert proof revisions'
+  - 'use uniproof_workflow transition create_new_draft'
+  - 'use uniproof_workflow transition publish'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view latest version'
+  - 'view proof revisions'
+  - 'view the administration theme'

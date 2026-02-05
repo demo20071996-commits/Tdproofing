@@ -1,0 +1,22 @@
+global-styling:
+  css:
+    base:
+      assets/css/base/reset.css: {}
+    layout:
+      assets/css/layout/layout.css: {}
+    component:
+      assets/css/components/buttons.css: {}
+    theme:
+      assets/css/style.css: {}
+
+global-scripts:
+  js:
+    assets/js/script.js: {}
+
+dashboard:
+  css:
+    theme:
+      assets/css/pages/dashboard.css: {}
+      assets/css/pages/editor-dashboard.css: {}
+  js:
+    assets/js/pages/dashboard.js: {}

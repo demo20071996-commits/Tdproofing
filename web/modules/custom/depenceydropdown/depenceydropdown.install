@@ -1,0 +1,61 @@
+<?php
+
+use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
+
+/**
+ * Implements hook_install().
+ */
+function depenceydropdown_install() {
+  // Create vocabularies.
+  foreach (['company' => 'Company', 'journal' => 'Journal', 'role' => 'Role'] as $vid => $name) {
+    if (!Vocabulary::load($vid)) {
+      Vocabulary::create(['vid' => $vid, 'name' => $name])->save();
+    }
+  }
+
+  // Add field_company to Journal terms.
+  if (!FieldStorageConfig::loadByName('taxonomy_term', 'field_company')) {
+    FieldStorageConfig::create([
+      'field_name' => 'field_company',
+      'entity_type' => 'taxonomy_term',
+      'type' => 'entity_reference',
+      'settings' => ['target_type' => 'taxonomy_term'],
+    ])->save();
+  }
+  if (!FieldConfig::loadByName('taxonomy_term', 'journal', 'field_company')) {
+    FieldConfig::create([
+      'field_name' => 'field_company',
+      'entity_type' => 'taxonomy_term',
+      'bundle' => 'journal',
+      'label' => 'Company',
+      'settings' => [
+        'handler' => 'default',
+        'handler_settings' => ['target_bundles' => ['company' => 'company']],
+      ],
+    ])->save();
+  }
+
+  // Add field_journal to Role terms.
+  if (!FieldStorageConfig::loadByName('taxonomy_term', 'field_journal')) {
+    FieldStorageConfig::create([
+      'field_name' => 'field_journal',
+      'entity_type' => 'taxonomy_term',
+      'type' => 'entity_reference',
+      'settings' => ['target_type' => 'taxonomy_term'],
+    ])->save();
+  }
+  if (!FieldConfig::loadByName('taxonomy_term', 'role', 'field_journal')) {
+    FieldConfig::create([
+      'field_name' => 'field_journal',
+      'entity_type' => 'taxonomy_term',
+      'bundle' => 'role',
+      'label' => 'Journal',
+      'settings' => [
+        'handler' => 'default',
+        'handler_settings' => ['target_bundles' => ['journal' => 'journal']],
+      ],
+    ])->save();
+  }
+}

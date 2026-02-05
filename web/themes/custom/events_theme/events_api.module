@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function events_api_theme() {
+  return [
+    'events_page' => [
+      'template' => 'events-page',
+    ],
+  ];
+}

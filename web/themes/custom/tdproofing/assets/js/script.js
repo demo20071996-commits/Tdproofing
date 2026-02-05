@@ -1,0 +1,1 @@
+console.log("TDProofing global script loaded");

@@ -1,0 +1,30 @@
+uuid: d4e982d7-3b13-4b3c-abab-d4bc0e1c1783
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_journal
+field_name: field_journal
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'client_first_client_first|Client First'
+      label: 'Client First'
+    -
+      value: 'client_second_client_second|Client Second'
+      label: 'Client Second'
+    -
+      value: 'client_third_client_third|Client Third'
+      label: 'Client Third'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

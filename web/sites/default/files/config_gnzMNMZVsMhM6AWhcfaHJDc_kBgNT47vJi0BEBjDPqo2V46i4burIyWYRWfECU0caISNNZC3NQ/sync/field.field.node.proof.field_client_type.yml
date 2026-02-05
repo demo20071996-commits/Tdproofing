@@ -1,0 +1,31 @@
+uuid: e8c88dc6-1437-49fa-8a52-ceed3bb94e8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_client_type
+    - node.type.proof
+    - taxonomy.vocabulary.client_type
+    - taxonomy.vocabulary.tags
+id: node.proof.field_client_type
+field_name: field_client_type
+entity_type: node
+bundle: proof
+label: 'Client Type '
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      client_type: client_type
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: client_type
+field_type: entity_reference

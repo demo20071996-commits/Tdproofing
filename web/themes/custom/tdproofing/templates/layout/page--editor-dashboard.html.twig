@@ -1,0 +1,44 @@
+
+{{ attach_library('tdproofing/dashboard') }}
+
+<div class="dashboard-container">
+  <h1>Welcome to TDProofing Dashboard</h1>
+
+  <a href="/node/add/article" class="button button--primary">
+    + Add Article
+  </a>
+</div>
+
+<h2>User Company & Journals</h2>
+<h1 style="color:red">TWIG IS WORKING</h1>
+{% if company_data is not empty %}
+  {% for company in company_data %}
+    <div class="company-box">
+      <h3>Company: {{ company.company_name }} (ID: {{ company.company_id }})</h3>
+
+      {% if company.journals %}
+        <ul>
+          {% for journal in company.journals %}
+            <li>
+              <strong>Journal:</strong> {{ journal.journal_name }} (ID: {{ journal.journal_id }})
+
+              {% if journal.roles %}
+                <ul>
+                  {% for role in journal.roles %}
+                    <li>Role: {{ role.role_name }} (ID: {{ role.role_id }})</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No journals found under this company.</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% else %}
+  <p>No assigned company for this user.</p>
+{% endif %}
+
+{{ attach_library('tdproofing/dashboard') }}

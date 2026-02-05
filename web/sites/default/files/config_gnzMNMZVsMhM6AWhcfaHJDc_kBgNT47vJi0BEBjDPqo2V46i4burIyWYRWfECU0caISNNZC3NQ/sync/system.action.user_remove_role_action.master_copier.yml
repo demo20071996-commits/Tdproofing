@@ -1,0 +1,14 @@
+uuid: e905d510-ec67-493e-9286-13e1607270c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.master_copier
+  module:
+    - user
+id: user_remove_role_action.master_copier
+label: 'Remove the Master Copier role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: master_copier

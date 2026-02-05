@@ -1,0 +1,14 @@
+uuid: 97977a03-3298-4a90-b721-f3bcf7c72cd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.typesetter
+  module:
+    - user
+id: user_remove_role_action.typesetter
+label: 'Remove the Typesetter role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: typesetter

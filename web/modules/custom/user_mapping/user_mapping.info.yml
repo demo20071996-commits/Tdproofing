@@ -1,0 +1,8 @@
+name: User Mapping
+type: module
+description: Save taxonomy selections (company, journal, role) for users.
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - user
+  - taxonomy

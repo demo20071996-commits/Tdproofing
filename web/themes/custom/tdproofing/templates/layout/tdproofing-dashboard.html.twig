@@ -1,0 +1,174 @@
+{{ attach_library('tdproofing/dashboard') }}
+
+
+<div class="dashboard-wrapper">
+  <h1>{{ title }}</h1>
+</div>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Proofing System — Dashboard</title>
+
+  <!-- External libs (replace with local files in production) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Your dashboard CSS -->
+  <link rel="stylesheet" href="assets/css/pages/dashboard.css">
+</head>
+<body class="td-dashboard">
+
+  <div class="td-shell">
+    <!-- SIDEBAR -->
+    <aside class="td-sidebar" id="tdSidebar" aria-label="Main navigation">
+      <div class="td-sidebar-top">
+        <div class="td-logo"> 
+          <div class="td-logo-mark">◑</div>
+          <div class="td-logo-text">Proofing System</div>
+        </div>
+      </div>
+
+      <nav class="td-nav">
+        <a class="td-nav-item active" href="#"><i class="fa fa-box-grid"></i><span>Dashboard</span></a>
+        <a class="td-nav-item" href="#"><i class="fa fa-file-lines"></i><span>Reports</span></a>
+        <a class="td-nav-item" href="#"><i class="fa fa-bell"></i><span>Notifications</span></a>
+        <a class="td-nav-item" href="#"><i class="fa fa-envelope"></i><span>Contact us</span></a>
+      </nav>
+
+      <div class="td-sidebar-footer">
+        <div class="td-user">
+          <img src="https://i.pravatar.cc/40" alt="user" class="td-avatar">
+          <div class="td-user-name">Karan Gupta</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- PAGE CONTENT -->
+    <div class="td-main">
+      <!-- HEADER -->
+      <header class="td-header">
+        <button id="tdToggle" class="td-hamburger"><i class="fa fa-bars"></i></button>
+        <div class="td-search">Home</div>
+
+        <div class="td-header-actions">
+          <button class="btn btn-outline-primary btn-sm td-add-btn"><i class="fa fa-plus"></i> Add Article</button>
+          <div class="td-notif"><i class="fa fa-bell"></i><span class="td-badge">6</span></div>
+          <div class="td-profile">
+            <img src="https://i.pravatar.cc/36" alt="profile" />
+            <div class="td-profile-name">Karan Gupta <small>Author</small></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTENT AREA -->
+      <main class="td-content container-fluid">
+        <div class="td-grid">
+          <!-- KPI cards -->
+          <section class="td-kpis">
+            <div class="td-kpi-card">
+              <div class="td-kpi-title">Total Articles</div>
+              <div class="td-kpi-value">2,604</div>
+              <div class="td-kpi-meta text-success">▲ 8.5% Up from yesterday</div>
+            </div>
+            <div class="td-kpi-card">
+              <div class="td-kpi-title">Delayed Articles</div>
+              <div class="td-kpi-value">114</div>
+              <div class="td-kpi-meta text-success">▲ 1.3% Up from past week</div>
+            </div>
+            <div class="td-kpi-card">
+              <div class="td-kpi-title">Pending Approvals</div>
+              <div class="td-kpi-value">56</div>
+              <div class="td-kpi-meta text-success">▲ 1.8% Up from yesterday</div>
+            </div>
+            <div class="td-kpi-card">
+              <div class="td-kpi-title">Approved Articles</div>
+              <div class="td-kpi-value">2,434</div>
+              <div class="td-kpi-meta text-danger">▼ 4.3% Down from yesterday</div>
+            </div>
+          </section>
+
+          <!-- Right panel - chart -->
+          <aside class="td-chart-card">
+            <div class="card h-100 p-3">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h6 class="mb-0">Overall Article Stats</h6>
+                <select class="form-select form-select-sm w-auto">
+                  <option>Week</option>
+                  <option>Month</option>
+                </select>
+              </div>
+              <canvas id="articlesDonut" style="height:220px"></canvas>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Article list -->
+        <section class="td-table mt-4 card p-3">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">Article List</h5>
+            <select class="form-select form-select-sm w-auto">
+              <option>Week</option>
+              <option>Month</option>
+            </select>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Title</th>
+                  <th>Assigned To</th>
+                  <th>Role</th>
+                  <th>Last Updated</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- sample rows -->
+                <tr>
+                  <td>GST revenue Performance</td>
+                  <td>Prabhat Kumar</td>
+                  <td>Author</td>
+                  <td>09-Dec-2025</td>
+                  <td><span class="td-badge-status pending">Pending</span></td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary"><i class="fa fa-pen"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>GST revenue Performance</td>
+                  <td>Prabhat Kumar</td>
+                  <td>Author</td>
+                  <td>09-Dec-2025</td>
+                  <td><span class="td-badge-status approved">Approved</span></td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary"><i class="fa fa-pen"></i></button>
+                    <button class="btn btn-sm btn-outline-secondary"><i class="fa fa-eye"></i></button>
+                  </td>
+                </tr>
+                <!-- add more rows as needed -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="td-footer">
+        <div class="container-fluid text-center text-muted p-3">
+          Powered by Drupal
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Required JS libs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/pages/dashboard.js"></script>
+</body>
+</html>

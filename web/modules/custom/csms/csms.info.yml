@@ -1,0 +1,5 @@
+name: CSMS User Mapping
+type: module
+description: Stores company-journal-role mapping for users.
+core_version_requirement: ^10 || ^11
+package: Custom

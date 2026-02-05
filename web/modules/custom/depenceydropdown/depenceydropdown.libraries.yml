@@ -1,0 +1,7 @@
+dependent_dropdowns:
+  js:
+    js/dependent-dropdown.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

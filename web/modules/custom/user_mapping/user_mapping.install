@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Install file for user_mapping.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function user_mapping_install() {
+  $schema = \Drupal::database()->schema();
+
+  if (!$schema->tableExists('user_company_journal_role')) {
+    $schema->createTable('user_company_journal_role', [
+      'fields' => [
+        'id' => [
+          'type' => 'serial',
+          'not null' => TRUE,
+        ],
+        'uid' => [
+          'type' => 'int',
+          'not null' => TRUE,
+        ],
+        'company_tid' => [
+          'type' => 'int',
+          'not null' => TRUE,
+        ],
+        'journal_tid' => [
+          'type' => 'int',
+          'not null' => TRUE,
+        ],
+        'role_tid' => [
+          'type' => 'int',
+          'not null' => TRUE,
+        ],
+      ],
+      'primary key' => ['id'],
+    ]);
+  }
+}

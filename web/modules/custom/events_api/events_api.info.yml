@@ -1,0 +1,7 @@
+name: Events API
+type: module
+description: Provides JSON API for upcoming events
+core_version_requirement: ^11
+package: Custom
+dependencies:
+  - drupal:node

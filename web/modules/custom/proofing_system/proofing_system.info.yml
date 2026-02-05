@@ -1,0 +1,5 @@
+name: Proofing System
+type: module
+description: Provides proofing functionality
+core_version_requirement: ^10 || ^11
+package: Custom

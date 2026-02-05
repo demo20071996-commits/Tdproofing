@@ -1,0 +1,13 @@
+{#
+  View: Events
+  Display: Page
+
+
+<div class="events-grid">
+  {% for row in rows %}
+    <div class="events-grid__item">
+      {{ row.content }}
+    </div>
+  {% endfor %}
+</div>
+#}

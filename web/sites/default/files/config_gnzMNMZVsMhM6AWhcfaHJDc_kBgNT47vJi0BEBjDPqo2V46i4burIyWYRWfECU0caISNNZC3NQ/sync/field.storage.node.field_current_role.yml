@@ -1,0 +1,20 @@
+uuid: 1dbd0802-c6ef-4d40-9571-21437b7c9e31
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.field_current_role
+field_name: field_current_role
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

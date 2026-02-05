@@ -1,0 +1,14 @@
+uuid: f13cc81c-4b81-470a-93e8-9f124f85eb1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.master_copier
+  module:
+    - user
+id: user_add_role_action.master_copier
+label: 'Add the Master Copier role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: master_copier

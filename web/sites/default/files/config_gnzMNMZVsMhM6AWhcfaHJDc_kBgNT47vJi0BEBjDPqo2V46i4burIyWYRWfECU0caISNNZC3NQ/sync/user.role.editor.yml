@@ -1,0 +1,39 @@
+uuid: 2a2f3082-8c2c-4ea3-a087-d909c21b73ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - node.type.proof
+    - workflows.workflow.uniproof_workflow
+  module:
+    - block_content
+    - content_moderation
+    - contextual
+    - file
+    - node
+    - system
+    - toolbar
+id: editor
+label: Editor
+weight: 5
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access block library'
+  - 'access content'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access toolbar'
+  - 'edit any proof content'
+  - 'edit own proof content'
+  - 'revert all revisions'
+  - 'revert proof revisions'
+  - 'use uniproof_workflow transition create_new_draft'
+  - 'use uniproof_workflow transition publish'
+  - 'view all revisions'
+  - 'view any basic block content history'
+  - 'view any unpublished content'
+  - 'view proof revisions'
+  - 'view the administration theme'

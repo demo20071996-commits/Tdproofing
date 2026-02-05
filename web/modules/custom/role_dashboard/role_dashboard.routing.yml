@@ -1,0 +1,23 @@
+role_dashboard.admin:
+  path: '/admin-dashboard'
+  defaults:
+    _controller: '\Drupal\role_dashboard\Controller\DashboardController::adminDashboard'
+    _title: 'Admin Dashboard'
+  requirements:
+    _permission: 'access content'
+
+role_dashboard.editor:
+  path: '/editor-dashboard'
+  defaults:
+    _controller: '\Drupal\role_dashboard\Controller\DashboardController::editorDashboard'
+    _title: 'Editor Dashboard'
+  requirements:
+    _permission: 'access content'
+
+role_dashboard.typesetter:
+  path: '/typesetter-dashboard'
+  defaults:
+    _controller: '\Drupal\role_dashboard\Controller\DashboardController::typesetterDashboard'
+    _title: 'Typesetter Dashboard'
+  requirements:
+    _permission: 'access content'

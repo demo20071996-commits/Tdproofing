@@ -1,0 +1,7 @@
+name: Role-Based Dashboard
+type: module
+description: Redirects users to dashboards based on role after login.
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:user

@@ -1,0 +1,9 @@
+uuid: 23d942f6-dd1f-4740-b227-4ff33cbf11f8
+langcode: en
+status: true
+dependencies: {  }
+name: Role
+vid: role
+description: null
+weight: 0
+new_revision: false

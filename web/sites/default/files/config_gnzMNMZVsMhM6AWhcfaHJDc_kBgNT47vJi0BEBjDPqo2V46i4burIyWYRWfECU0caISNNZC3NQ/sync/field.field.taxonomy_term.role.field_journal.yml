@@ -1,0 +1,24 @@
+uuid: 65236eb3-eabf-4a52-a43e-db4d9c4bac94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_journal
+    - taxonomy.vocabulary.journal
+    - taxonomy.vocabulary.role
+id: taxonomy_term.role.field_journal
+field_name: field_journal
+entity_type: taxonomy_term
+bundle: role
+label: Journal
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      journal: journal
+field_type: entity_reference

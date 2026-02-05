@@ -1,0 +1,13 @@
+uniproof.admin:
+  title: 'UniProof'
+  description: 'UniProof tools and dashboard'
+  parent: system.admin
+  route_name: uniproof.dashboard
+  weight: 5
+
+uniproof.workflow_tools:
+  title: 'Workflow Tools'
+  description: 'Utility tools for workflow management'
+  parent: system.admin
+  route_name: uniproof.workflow_tools
+  weight: 6

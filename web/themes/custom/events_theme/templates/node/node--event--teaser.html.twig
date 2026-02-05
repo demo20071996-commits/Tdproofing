@@ -1,0 +1,30 @@
+{#
+  Event card – teaser view
+#}
+
+<article class="event-card">
+
+  <div class="event-card__header">
+    {% if content.field_category %}
+      <div class="event-category">
+        {{ content.field_category }}
+      </div>
+    {% endif %}
+  </div>
+
+  <h3 class="event-title">
+    <a href="{{ url }}">{{ label }}</a>
+  </h3>
+
+  {% if content.field_location %}
+    <div class="event-location">
+       {{ content.field_location }}
+    </div>
+  {% endif %}
+
+  {% if content.field_summary %}
+    <div class="event-summary">
+      {{ content.field_summary }}
+    </div>
+  {% endif %}
+</article>

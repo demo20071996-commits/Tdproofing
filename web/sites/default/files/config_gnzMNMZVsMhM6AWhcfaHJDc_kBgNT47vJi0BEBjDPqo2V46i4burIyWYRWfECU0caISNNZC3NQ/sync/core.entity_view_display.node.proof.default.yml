@@ -1,0 +1,76 @@
+uuid: 722ba6ca-a2f5-4f26-ae77-35b3ae1ca7e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.proof.field_assigned_user
+    - field.field.node.proof.field_client_type
+    - field.field.node.proof.field_current_role
+    - field.field.node.proof.field_due_date
+    - field.field.node.proof.field_journal
+    - field.field.node.proof.field_pdf_file
+    - node.type.proof
+  module:
+    - datetime
+    - file
+    - options
+    - user
+id: node.proof.default
+targetEntityType: node
+bundle: proof
+mode: default
+content:
+  field_assigned_user:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_client_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_current_role:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_due_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_journal:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_pdf_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

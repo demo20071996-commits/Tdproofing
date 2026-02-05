@@ -1,0 +1,14 @@
+uuid: df0f3438-9ddb-4c19-ba38-9aa0ddde70c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.typesetter
+  module:
+    - user
+id: user_add_role_action.typesetter
+label: 'Add the Typesetter role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: typesetter

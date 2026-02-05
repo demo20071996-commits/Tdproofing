@@ -1,0 +1,9 @@
+uuid: 11965f5c-f327-4eec-95fa-0b4e27ff959f
+langcode: en
+status: true
+dependencies: {  }
+id: master_copier
+label: 'Master Copier'
+weight: 8
+is_admin: false
+permissions: {  }

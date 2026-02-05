@@ -1,0 +1,5 @@
+name: Role Login Redirect
+type: module
+description: Redirect users based on role after login
+core_version_requirement: ^10 || ^11
+package: Custom

@@ -1,0 +1,11 @@
+name: User Company Hierarchy
+type: module
+description: Adds hierarchical company fields to user form and stores data in a custom table.
+core_version_requirement: ^11
+package: Custom
+version: 1.0
+dependencies:
+  - drupal:node
+  - drupal:user
+  - drupal:field
+  - drupal:system

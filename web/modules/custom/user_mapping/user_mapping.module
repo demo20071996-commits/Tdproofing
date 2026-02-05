@@ -1,0 +1,52 @@
+<?php
+
+use Drupal\Core\Database\Database;
+use Drupal\user\Entity\User;
+
+/**
+ * Save or update user-company-journal-role mapping.
+ */
+function user_mapping_save(User $user) {
+  $uid = $user->id();
+
+  // Get field values.
+  $company = $user->get('field_company')->target_id;
+  $journal = $user->get('field_journal')->target_id;
+  $role = $user->get('field_role')->target_id;
+
+  // If fields are empty, skip.
+  if (!$company || !$journal || !$role) {
+    \Drupal::logger('user_mapping')->warning("User $uid missing mapping fields.");
+    return;
+  }
+
+  $connection = Database::getConnection();
+
+  // Check if record exists.
+  $existing = $connection->select('user_company_journal_role', 'ucjr')
+    ->fields('ucjr', ['id'])
+    ->condition('uid', $uid)
+    ->execute()
+    ->fetchField();
+
+  if ($existing) {
+    $connection->update('user_company_journal_role')
+      ->fields([
+        'company_id' => $company,
+        'journal_id' => $journal,
+        'role_id' => $role,
+      ])
+      ->condition('id', $existing)
+      ->execute();
+  }
+  else {
+    $connection->insert('user_company_journal_role')
+      ->fields([
+        'uid' => $uid,
+        'company_id' => $company,
+        'journal_id' => $journal,
+        'role_id' => $role,
+      ])
+      ->execute();
+  }
+}

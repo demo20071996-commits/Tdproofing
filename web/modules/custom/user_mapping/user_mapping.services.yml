@@ -1,0 +1,5 @@
+services:
+  user_mapping.user_save_subscriber:
+    class: Drupal\user_mapping\EventSubscriber\UserSaveSubscriber
+    tags:
+     

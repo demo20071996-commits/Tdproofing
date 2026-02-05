@@ -1,0 +1,29 @@
+uuid: d0d80809-2d29-43ea-9fd6-a4dd0a4781e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assigned_user
+    - node.type.proof
+id: node.proof.field_assigned_user
+field_name: field_assigned_user
+entity_type: node
+bundle: proof
+label: 'Assigned User'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: false
+field_type: entity_reference

@@ -1,0 +1,23 @@
+uuid: 8637005c-477d-4b0a-a745-0f43a6f59892
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - tdproofing
+_core:
+  default_config_hash: _nZjxxdypO6xrOAJkCYD81v0L7wh2zbCAVO7_C-UKIc
+id: tdproofing_search_form_narrow
+theme: tdproofing
+region: primary_menu
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility: {  }

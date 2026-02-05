@@ -1,0 +1,103 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function user_dependency_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  // Add container for Journal + Role.
+  $form['company_dependency_wrapper'] = [
+    '#type' => 'container',
+    '#attributes' => ['id' => 'company-dependency-wrapper'],
+  ];
+
+  // Move fields inside wrapper.
+  if (isset($form['field_journal'])) {
+    $form['company_dependency_wrapper']['field_journal'] = $form['field_journal'];
+    unset($form['field_journal']);
+  }
+
+  if (isset($form['field_role'])) {
+    $form['company_dependency_wrapper']['field_role'] = $form['field_role'];
+    unset($form['field_role']);
+  }
+
+  // Empty text.
+  $form['company_dependency_wrapper']['field_journal']['#empty_option'] = '- Select Journal -';
+  $form['company_dependency_wrapper']['field_role']['#empty_option'] = '- Select Role -';
+
+  // AJAX: company → reload journal + role.
+  $form['field_company_type']['#ajax'] = [
+    'callback' => 'user_dependency_reload_journal_role',
+    'event' => 'change',
+    'wrapper' => 'company-dependency-wrapper',
+  ];
+
+  // AJAX: journal → reload role.
+  $form['company_dependency_wrapper']['field_journal']['#ajax'] = [
+    'callback' => 'user_dependency_reload_role',
+    'event' => 'change',
+    'wrapper' => 'company-dependency-wrapper',
+  ];
+
+  // Initial filter.
+  _user_dependency_apply_filter($form, $form_state);
+}
+
+/**
+ * AJAX callback — Company changed.
+ */
+function user_dependency_reload_journal_role(array &$form, FormStateInterface $form_state) {
+  _user_dependency_apply_filter($form, $form_state);
+  return $form['company_dependency_wrapper'];
+}
+
+/**
+ * AJAX callback — Journal changed.
+ */
+function user_dependency_reload_role(array &$form, FormStateInterface $form_state) {
+  _user_dependency_apply_filter($form, $form_state);
+  return $form['company_dependency_wrapper'];
+}
+
+/**
+ * Apply filtering logic for dependent dropdowns.
+ */
+function _user_dependency_apply_filter(&$form, FormStateInterface $form_state) {
+
+  // Selected company.
+  $selected_company = $form_state->getValue(['field_company_type', 0, 'target_id'])
+    ?? ($form['field_company_type']['#default_value'][0]['target_id'] ?? NULL);
+
+  // Selected journal.
+  $selected_journal = $form_state->getValue([
+    'company_dependency_wrapper',
+    'field_journal',
+    0,
+    'target_id'
+  ]) ?? NULL;
+
+  // Load taxonomy.
+  $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')
+    ->loadTree('company_structure');
+
+  // Filter journals.
+  $journals = [];
+  foreach ($terms as $term) {
+    if ($term->parent == $selected_company) {
+      $journals[$term->tid] = $term->name;
+    }
+  }
+  $form['company_dependency_wrapper']['field_journal']['#options'] = $journals;
+
+  // Filter roles.
+  $roles = [];
+  foreach ($terms as $term) {
+    if ($term->parent == $selected_journal) {
+      $roles[$term->tid] = $term->name;
+    }
+  }
+  $form['company_dependency_wrapper']['field_role']['#options'] = $roles;
+}

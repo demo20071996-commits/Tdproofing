@@ -1,0 +1,5 @@
+services:
+  role_dashboard.login_subscriber:
+    class: Drupal\role_dashboard\EventSubscriber\LoginSubscriber
+    tags:
+      - { name: event_subscriber }

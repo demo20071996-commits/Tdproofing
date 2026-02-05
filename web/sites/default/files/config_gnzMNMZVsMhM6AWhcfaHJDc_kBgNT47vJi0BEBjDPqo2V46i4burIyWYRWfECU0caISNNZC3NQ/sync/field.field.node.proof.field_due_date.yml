@@ -1,0 +1,21 @@
+uuid: 62ab643b-f338-43b1-aa1a-c3e7c8ed9425
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_due_date
+    - node.type.proof
+  module:
+    - datetime
+id: node.proof.field_due_date
+field_name: field_due_date
+entity_type: node
+bundle: proof
+label: 'Due date'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

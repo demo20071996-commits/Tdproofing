@@ -1,0 +1,67 @@
+
+custom_redirect.editor_dashboard:
+  path: '/editor-dashboard'
+  defaults:
+    _title: 'Editor Dashboard'
+    _controller: '\Drupal\custom_redirect\Controller\DashboardController::editor'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+custom_redirect.typesetter_dashboard:
+  path: '/typesetter-dashboard'
+  defaults:
+    _title: 'Typesetter Dashboard'
+    _controller: '\Drupal\custom_redirect\Controller\DashboardController::typesetter'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+custom_redirect.author_dashboard:
+  path: '/author-dashboard'
+  defaults:
+    _title: 'Author Dashboard'
+    _controller: '\Drupal\custom_redirect\Controller\DashboardController::author'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+custom_redirect.mastercopy_dashboard:
+  path: '/mastercopy-dashboard'
+  defaults:
+    _title: 'Master Copy Dashboard'
+    _controller: '\Drupal\custom_redirect\Controller\DashboardController::mastercopy'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+custom_redirect.get_journals:
+  # path: '/custom-redirect/ajax/journals/{company_tid}'
+  path: '/custom/get-journals/{company_tid}'
+  defaults:
+    _controller: '\Drupal\custom_redirect\Controller\UserAjaxController::getJournals'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+custom_redirect.get_roles:
+  path: '/custom-redirect/ajax/roles/{journal_tid}'
+  defaults:
+    _controller: '\Drupal\custom_redirect\Controller\UserAjaxController::getRoles'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+
+# custom_redirect.get_journals:
+#   path: '/custom/get-journals/{company_tid}'
+#   defaults:
+#     _controller: '\Drupal\custom_redirect\Controller\DependentDataController::getJournals'
+#   requirements:
+#     _permission: 'access content'

@@ -1,0 +1,22 @@
+uuid: 63bc7c86-04ae-43d3-aa93-412c09f65632
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tdproofing
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: tdproofing_breadcrumbs
+theme: tdproofing
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

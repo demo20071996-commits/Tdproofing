@@ -1,0 +1,9 @@
+uuid: 8019d879-b7db-457d-b84e-ab8ecfafb79d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Company structure'
+vid: company_structure
+description: null
+weight: 0
+new_revision: false

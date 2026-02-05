@@ -1,0 +1,22 @@
+uuid: 14ba78e0-b426-4ecc-851d-50c2c00edcb6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tdproofing
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: tdproofing_content
+theme: tdproofing
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

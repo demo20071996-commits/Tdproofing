@@ -1,0 +1,6 @@
+/* assets/css/pages/editor-dashboard.css */
+.editor-dashboard-wrapper .site-header,
+.editor-dashboard-wrapper .search-block-form,
+.editor-dashboard-wrapper .site-branding {
+  display: none !important;
+}

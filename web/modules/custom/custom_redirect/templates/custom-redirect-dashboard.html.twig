@@ -1,0 +1,41 @@
+<div class="custom-dashboard-wrapper">
+
+  <h2>Dashboard</h2>
+
+  <div class="dashboard-user-info">
+
+    <h3>User Information</h3>
+
+    <p><strong>User:</strong> {{ user.getDisplayName() }}</p>
+
+    {% if company_data %}
+      <p><strong>Company:</strong> {{ company_data.company }}</p>
+      <p><strong>Journal:</strong> {{ company_data.journal }}</p>
+      <p><strong>Role:</strong> {{ company_data.role }}</p>
+    {% else %}
+      <p><strong>Company:</strong> Not found</p>
+      <p><strong>Journal:</strong> Not found</p>
+      <p><strong>Role:</strong> Not found</p>
+    {% endif %}
+
+  </div>
+
+
+  {# ------------------------------ #}
+  {# DEBUG SECTION (REMOVE LATER)   #}
+  {# ------------------------------ #}
+
+  <div class="dashboard-debug-box" style="padding:10px;border:1px dashed #999;margin-top:20px;">
+    <h3>DEBUG OUTPUT</h3>
+
+    <pre>
+User object loaded: {{ user ? 'YES' : 'NO' }}
+Company data loaded: {{ company_data ? 'YES' : 'NO' }}
+
+Company: {{ company_data.company }}
+Journal: {{ company_data.journal }}
+Role: {{ company_data.role }}
+    </pre>
+  </div>
+
+</div>
